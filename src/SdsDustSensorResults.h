@@ -2,7 +2,6 @@
 #define __SDS_DUST_SENSOR_RESULTS_H__
 
 #include "SdsDustSensorCommands.h"
-#include <SoftwareSerial.h>
 
 enum class Status {
   Ok, NotAvailable, InvalidChecksum, InvalidResponseId, InvalidHead, InvalidTail

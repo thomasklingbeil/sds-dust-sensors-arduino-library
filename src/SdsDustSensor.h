@@ -35,25 +35,6 @@
 
 class SdsDustSensor {
 public:
-  SdsDustSensor(int pinRx,
-                int pinTx,
-                int retryDelayMs = RETRY_DELAY_MS_DEFAULT,
-                int maxRetriesNotAvailable = MAX_RETRIES_NOT_AVAILABLE_DEFAULT):
-    abstractSerial(new Serials::InternalSoftware(pinRx, pinTx)),
-    retryDelayMs(retryDelayMs),
-    maxRetriesNotAvailable(maxRetriesNotAvailable) {
-      sdsStream = abstractSerial->getStream();
-    }
-
-  SdsDustSensor(SoftwareSerial &softwareSerial,
-                int retryDelayMs = RETRY_DELAY_MS_DEFAULT,
-                int maxRetriesNotAvailable = MAX_RETRIES_NOT_AVAILABLE_DEFAULT):
-    abstractSerial(new Serials::Software(softwareSerial)),
-    retryDelayMs(retryDelayMs),
-    maxRetriesNotAvailable(maxRetriesNotAvailable) {
-      sdsStream = abstractSerial->getStream();
-    }
-
   SdsDustSensor(HardwareSerial &hardwareSerial,
                 int retryDelayMs = RETRY_DELAY_MS_DEFAULT,
                 int maxRetriesNotAvailable = MAX_RETRIES_NOT_AVAILABLE_DEFAULT):

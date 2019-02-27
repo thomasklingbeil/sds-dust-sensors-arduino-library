@@ -1,7 +1,6 @@
 #ifndef __SDS_ABSTRACT_SERIAL_H__
 #define __SDS_ABSTRACT_SERIAL_H__
 
-#include <SoftwareSerial.h>
 #include <HardwareSerial.h>
 
 namespace Serials {
@@ -32,41 +31,6 @@ namespace Serials {
     }
 
     HardwareSerial &serial;
-  };
-
-  struct Software: public AbstractSerial {
-    Software(SoftwareSerial &serial): serial(serial) {}
-
-    void begin(int baudRate) {
-      serial.begin(baudRate);
-    }
-
-    Stream *getStream() {
-      return &serial;
-    }
-
-    SoftwareSerial &serial;
-  };
-
-  struct InternalSoftware: public AbstractSerial {
-    InternalSoftware(const int &pinRx, const int &pinTx):
-      serial(new SoftwareSerial(pinRx, pinTx)) {}
-
-    ~InternalSoftware() {
-      if (serial != NULL) {
-        delete serial;
-      }
-    }
-
-    void begin(int baudRate) {
-      serial->begin(baudRate);
-    }
-
-    Stream *getStream() {
-      return serial;
-    }
-
-    SoftwareSerial *serial;
   };
 
 }
